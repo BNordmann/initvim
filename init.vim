@@ -10,6 +10,12 @@ Plug 'sbdchd/neoformat'
 Plug 'preservim/nerdtree'
 
 call plug#end()
+" Navigate splits with alt+hjkl
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " deoplete:
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -27,3 +33,6 @@ let g:jedi#completions_enabled = 0
 " open the go-to function in split, not another buffer
 let g:jedi#use_splits_not_buffers = "right"
 
+" VIM-config
+set number relativenumber
+set nu rnu
