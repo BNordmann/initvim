@@ -1,0 +1,1 @@
+# Birger's init.vim
