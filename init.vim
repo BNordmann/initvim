@@ -8,8 +8,12 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sbdchd/neoformat'
 Plug 'preservim/nerdtree'
+Plug 'puremourning/vimspector'
 
 call plug#end()
+" Vimspector
+let g:vimspector_enable_mappings = 'HUMAN'
+
 " Navigate splits with alt+hjkl
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -36,3 +40,4 @@ let g:jedi#use_splits_not_buffers = "right"
 " VIM-config
 set number relativenumber
 set nu rnu
+
