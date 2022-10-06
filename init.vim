@@ -8,13 +8,11 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sbdchd/neoformat'
 Plug 'preservim/nerdtree'
-Plug 'puremourning/vimspector'
+Plug 'dhruvasagar/vim-table-mode'
 
 call plug#end()
-" Vimspector
-let g:vimspector_enable_mappings = 'HUMAN'
 
-" Navigate splits with alt+hjkl
+" Navigate splits with ctrl+hjkl
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -41,3 +39,12 @@ let g:jedi#use_splits_not_buffers = "right"
 set number relativenumber
 set nu rnu
 
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
+
+let mapleader = " "
