@@ -9,8 +9,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'sbdchd/neoformat'
 Plug 'preservim/nerdtree'
 Plug 'dhruvasagar/vim-table-mode'
-" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install()  }, 'for': ['markdown', 'v-plug'] }
 Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown' }
+Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
 
