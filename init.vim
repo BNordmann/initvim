@@ -9,7 +9,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'sbdchd/neoformat'
 Plug 'preservim/nerdtree'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install()  }, 'for': ['markdown', 'vim-plug'] }
+" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install()  }, 'for': ['markdown', 'v-plug'] }
+Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown' }
 
 call plug#end()
 
@@ -49,6 +50,8 @@ let g:mkdp_browser = ''
 let g:mkdp_filetpyes = ['markdown']
 let g:mkdp_themee = 'dark'
 
+" recognize markdown files as markdown
+autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 " VIM-config
 set number relativenumber
