@@ -51,7 +51,7 @@ let g:mkdp_filetpyes = ['markdown']
 let g:mkdp_themee = 'dark'
 
 " recognize markdown files as markdown
-autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufFilePre,BufRead \c*.md set filetype=markdown
 
 " VIM-config
 set number relativenumber
