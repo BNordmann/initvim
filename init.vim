@@ -57,6 +57,11 @@ autocmd BufNewFile,BufFilePre,BufRead \c*.md set filetype=markdown
 set number relativenumber
 set nu rnu
 
+" Enable spell-check in Markdown and Git commit
+autocmd FileType markdown setlocal spell
+autocmd FileType gitcommit setlocal spell
+
+
 filetype plugin indent on
 " show existing tab with 4 spaces width
 set tabstop=4
