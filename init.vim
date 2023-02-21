@@ -7,7 +7,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sbdchd/neoformat'
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
+Plug 'nvim-tree/nvim-tree.lua'
+Plug 'nvim-tree/nvim-web-devicons'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown' }
 Plug 'ctrlpvim/ctrlp.vim'
@@ -27,8 +29,9 @@ inoremap <expr><c-j> pumvisible() ? "\<c-n>" : "\<c-j>"
 inoremap <expr><c-k> pumvisible() ? "\<c-p>" : "\<c-k>"
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-" nerdtree:
-map <silent> <C-n> :NERDTreeToggle<CR>
+" nvim-tree:
+lua require("nvim-tree").setup()
+map <silent> <C-n> :NvimTreeToggle<CR>
 
 " jedi-vim:
 " disable autocompletion, because we use deoplete for completion
