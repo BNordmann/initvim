@@ -1,2 +1,4 @@
 autoload/
 plugged/
+spell/*.utf-8.spl
+spell/*.utf-8.sug

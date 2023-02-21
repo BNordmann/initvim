@@ -6,13 +6,16 @@ Plug 'zchee/deoplete-jedi'
 Plug 'vim-airline/vim-airline'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
-Plug 'sbdchd/neoformat'
 Plug 'preservim/nerdtree'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown' }
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'sainnhe/everforest'
 
 call plug#end()
+
+" colorscheme
+colorscheme everforest
 
 " Navigate splits with ctrl+hjkl
 nnoremap <C-J> <C-W><C-J>
@@ -27,7 +30,7 @@ inoremap <expr><c-j> pumvisible() ? "\<c-n>" : "\<c-j>"
 inoremap <expr><c-k> pumvisible() ? "\<c-p>" : "\<c-k>"
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-" nerdtree:
+" nerdtree
 map <silent> <C-n> :NERDTreeToggle<CR>
 
 " jedi-vim:
@@ -40,6 +43,7 @@ let g:jedi#use_splits_not_buffers = "right"
 " markdown-preview
 " 1 means nvim will open preview when entering a markdown buffer
 let g:mkdp_auto_start = 0
+
 " 1 means nvim will automatically close preview when opening non markdown
 " buffer
 let g:mkdp_auto_close = 1
@@ -50,9 +54,6 @@ let g:mkdp_browser = ''
 let g:mkdp_filetpyes = ['markdown']
 let g:mkdp_themee = 'dark'
 
-" recognize markdown files as markdown
-autocmd BufNewFile,BufFilePre,BufRead \c*.md set filetype=markdown
-
 " VIM-config
 set number relativenumber
 set nu rnu
@@ -61,6 +62,8 @@ set nu rnu
 autocmd FileType markdown setlocal spell
 autocmd FileType gitcommit setlocal spell
 
+" recognize markdown files as markdown
+autocmd BufNewFile,BufFilePre,BufRead \c*.md set filetype=markdown
 
 filetype plugin indent on
 " show existing tab with 4 spaces width
