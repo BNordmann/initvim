@@ -56,6 +56,9 @@ let g:mkdp_browser = ''
 let g:mkdp_filetpyes = ['markdown']
 let g:mkdp_themee = 'dark'
 
+" vim-markdown
+let g:vim_markdown_toc_autofit = 1
+let g:vim_markdown_folding_level = 3
 
 " VIM-config
 set number relativenumber
@@ -77,6 +80,9 @@ set shiftwidth=4
 set expandtab
 
 let mapleader = " "
+
+" disable autofolding when a file is opened
+set nofoldenable
 
 " Tab as 4 spaces
 set tabstop=4
