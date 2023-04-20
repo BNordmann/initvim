@@ -12,6 +12,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for':
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'sainnhe/everforest'
 
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
 call plug#end()
 
 " colorscheme
@@ -85,3 +87,10 @@ set smarttab
 
 " 80 char line
 set colorcolumn=80
+
+" allow incrementing/decrementing alphabetical characters
+set nrformats+=alpha
+
+" key maps for increasing split size
+nnoremap <silent> <C-w>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> <C-w>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
