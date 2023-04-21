@@ -12,16 +12,10 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for':
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'sainnhe/everforest'
 
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
 call plug#end()
 
-" colorscheme
-colorscheme everforest
-
-" Navigate splits with ctrl+hjkl
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 
 " deoplete:
 " Use deoplete.
@@ -54,6 +48,14 @@ let g:mkdp_browser = ''
 let g:mkdp_filetpyes = ['markdown']
 let g:mkdp_themee = 'dark'
 
+" ctrlp
+
+" vim-markdown
+let g:vim_markdown_toc_autofit = 1
+let g:vim_markdown_folding_level = 3
+let g:vim_markdown_auto_insert_bullets = 0
+let g:vim_markdown_new_list_item_indent = 0
+
 " VIM-config
 set number relativenumber
 set nu rnu
@@ -75,6 +77,9 @@ set expandtab
 
 let mapleader = " "
 
+" disable autofolding when a file is opened
+set nofoldenable
+
 " Tab as 4 spaces
 set tabstop=4
 set shiftwidth=4
@@ -84,3 +89,57 @@ set smarttab
 
 " 80 char line
 set colorcolumn=80
+
+" allow incrementing/decrementing alphabetical characters
+set nrformats+=alpha
+
+" key maps for increasing split size
+nnoremap <silent> <C-w>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> <C-w>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+
+" colorscheme
+colorscheme everforest
+
+" Navigate splits with ctrl+hjkl
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" ctrlp
+let g:ctrlp_prompt_mappings = {
+\ 'PrtBS()':              ['<bs>', '<c-]>'],
+\ 'PrtDelete()':          ['<del>'],
+\ 'PrtDeleteWord()':      ['<c-w>'],
+\ 'PrtClear()':           ['<c-u>'],
+\ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
+\ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
+\ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
+\ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
+\ 'PrtSelectMove("u")':   ['<PageUp>', '<kPageUp>'],
+\ 'PrtSelectMove("d")':   ['<PageDown>', '<kPageDown>'],
+\ 'PrtHistory(-1)':       ['<c-n>'],
+\ 'PrtHistory(1)':        ['<c-p>'],
+\ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
+\ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
+\ 'AcceptSelection("t")': ['<c-t>'],
+\ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>'],
+\ 'ToggleFocus()':        ['<s-tab>'],
+\ 'ToggleRegex()':        ['<c-r>'],
+\ 'ToggleByFname()':      ['<c-d>'],
+\ 'ToggleType(1)':        ['<c-f>', '<c-l>', '<c-up>'],
+\ 'ToggleType(-1)':       ['<c-b>', '<c-h>', '<c-down>'],
+\ 'PrtExpandDir()':       ['<tab>'],
+\ 'PrtInsert("c")':       ['<MiddleMouse>', '<insert>'],
+\ 'PrtInsert()':          ['<c-\>'],
+\ 'PrtCurStart()':        ['<c-a>'],
+\ 'PrtCurEnd()':          ['<c-e>'],
+\ 'PrtCurLeft()':         ['<left>', '<c-^>'],
+\ 'PrtCurRight()':        ['<right>'],
+\ 'PrtClearCache()':      ['<F5>'],
+\ 'PrtDeleteEnt()':       ['<F7>'],
+\ 'CreateNewFile()':      ['<c-y>'],
+\ 'MarkToOpen()':         ['<c-z>'],
+\ 'OpenMulti()':          ['<c-o>'],
+\ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>'],
+\ }
