@@ -84,8 +84,7 @@ set expandtab
 set smarttab
 
 " 80 char line
-set colorcolumn=80
-set colorcolumn=100
+set colorcolumn=80,100
 
 " allow incrementing/decrementing alphabetical characters
 set nrformats+=alpha
