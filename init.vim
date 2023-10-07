@@ -67,13 +67,8 @@ autocmd FileType gitcommit setlocal spell
 " recognize markdown files as markdown
 autocmd BufNewFile,BufFilePre,BufRead \c*.md set filetype=markdown
 
-filetype plugin indent on
-" show existing tab with 4 spaces width
-set tabstop=4
-" when indenting with '>', use 4 spaces width
-set shiftwidth=4
-" On pressing tab, insert 4 spaces
-set expandtab
+" Set new empty buffers to markdown filetype
+autocmd BufEnter {} set filetype=markdown
 
 let mapleader = " "
 
@@ -81,6 +76,7 @@ let mapleader = " "
 set nofoldenable
 
 " Tab as 4 spaces
+filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set softtabstop=0
@@ -88,7 +84,7 @@ set expandtab
 set smarttab
 
 " 80 char line
-set colorcolumn=80
+set colorcolumn=80,100
 
 " allow incrementing/decrementing alphabetical characters
 set nrformats+=alpha
