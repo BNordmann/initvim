@@ -94,6 +94,7 @@ nnoremap <silent> <C-w>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> <C-w>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
 " colorscheme
+let g:everforest_better_performance = 1
 colorscheme everforest
 
 " Navigate splits with ctrl+hjkl
