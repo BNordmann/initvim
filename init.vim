@@ -1,4 +1,4 @@
-call plug#begin('~/.config/nvim/autoload')
+call plug#begin()
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'davidhalter/jedi-vim'
