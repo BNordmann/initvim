@@ -22,9 +22,9 @@ call plug#end()
 " deoplete:
 " Use deoplete.
 if has("win32")
-    call remote#host#RegisterPlugin('python3', 'C:\\\\Users\\\\x3-ru\\\\AppData\\\\Local\\\\nvim-data\\\\plugged\\\\deoplete.nvim\\\\rplugin\\\\python3\\\\deoplete\\\\deoplete.py', [
-           \ {'sync': 1, 'name': 'DeopleteInitializePython', 'type': 'command', 'opts': {}},
-          \ ])
+    call remote#host#RegisterPlugin('python3', 'C:\\\\Users\\\\x3-ru\\\\AppData\\\\Local\\\\nvim-data\\\\plugged\\\\deoplete.nvim\\\\rplugin\\\\python3\\\\deoplete', [
+          \ {'sync': v:false, 'name': '_deoplete_init', 'type': 'function', 'opts': {}},
+         \ ])
 endif
 
 let g:deoplete#enable_at_startup = 1
