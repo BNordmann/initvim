@@ -16,13 +16,12 @@ Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
 call plug#end()
 
-" python3
-" let g:python3_host_prog = "C:\\\\Python\\\\WPy64-31180\\\\python-3.11.8.amd64\\\\python3"
-
 " deoplete:
 " Use deoplete.
 if has("win32")
-    call remote#host#RegisterPlugin('python3', 'C:\\\\Users\\\\x3-ru\\\\AppData\\\\Local\\\\nvim-data\\\\plugged\\\\deoplete.nvim\\\\rplugin\\\\python3\\\\deoplete', [
+    let userprofile_escaped = substitute(expand('~'), "\\", "\\\\\\\\\\\\\\\\", "g")
+
+    call remote#host#RegisterPlugin('python3', userprofile_escaped . '\\\\AppData\\\\Local\\\\nvim-data\\\\plugged\\\\deoplete.nvim\\\\rplugin\\\\python3\\\\deoplete', [
           \ {'sync': v:false, 'name': '_deoplete_init', 'type': 'function', 'opts': {}},
          \ ])
 endif
