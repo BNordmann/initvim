@@ -9,18 +9,20 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'preservim/nerdtree'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
 Plug 'sainnhe/everforest'
-
 Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
+
 call plug#end()
 
 " deoplete:
 " Use deoplete.
 if has("win32")
     let userprofile_escaped = substitute(expand('~'), "\\", "\\\\\\\\\\\\\\\\", "g")
-
     call remote#host#RegisterPlugin('python3', userprofile_escaped . '\\\\AppData\\\\Local\\\\nvim-data\\\\plugged\\\\deoplete.nvim\\\\rplugin\\\\python3\\\\deoplete', [
           \ {'sync': v:false, 'name': '_deoplete_init', 'type': 'function', 'opts': {}},
          \ ])
@@ -30,6 +32,12 @@ let g:deoplete#enable_at_startup = 1
 inoremap <expr><c-j> pumvisible() ? "\<c-n>" : "\<c-j>"
 inoremap <expr><c-k> pumvisible() ? "\<c-p>" : "\<c-k>"
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+" telescope
+nnoremap <c-p> <cmd>Telescope find_files<cr>
+nnoremap <c-o> <cmd>Telescope oldfiles<cr>
+
+lua require("config_telescope")
 
 " nerdtree
 map <silent> <C-n> :NERDTreeToggle<CR>
