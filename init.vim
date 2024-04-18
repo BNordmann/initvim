@@ -1,4 +1,4 @@
-call plug#begin('~/.config/nvim/autoload')
+call plug#begin()
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'davidhalter/jedi-vim'
@@ -8,7 +8,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'preservim/nerdtree'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'sainnhe/everforest'
 
@@ -16,9 +16,17 @@ Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
 call plug#end()
 
+" python3
+" let g:python3_host_prog = "C:\\\\Python\\\\WPy64-31180\\\\python-3.11.8.amd64\\\\python3"
 
 " deoplete:
 " Use deoplete.
+if has("win32")
+    call remote#host#RegisterPlugin('python3', 'C:\\\\Users\\\\x3-ru\\\\AppData\\\\Local\\\\nvim-data\\\\plugged\\\\deoplete.nvim\\\\rplugin\\\\python3\\\\deoplete', [
+          \ {'sync': v:false, 'name': '_deoplete_init', 'type': 'function', 'opts': {}},
+         \ ])
+endif
+
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><c-j> pumvisible() ? "\<c-n>" : "\<c-j>"
 inoremap <expr><c-k> pumvisible() ? "\<c-p>" : "\<c-k>"
