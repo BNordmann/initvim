@@ -34,6 +34,8 @@ inoremap <expr><c-k> pumvisible() ? "\<c-p>" : "\<c-k>"
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " telescope
+inoremap <c-p> <cmd>Telescope find_files<cr>
+inoremap <c-o> <cmd>Telescope oldfiles<cr>
 nnoremap <c-p> <cmd>Telescope find_files<cr>
 nnoremap <c-o> <cmd>Telescope oldfiles<cr>
 
