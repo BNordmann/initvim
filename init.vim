@@ -17,6 +17,8 @@ Plug 'preservim/vim-markdown'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
 
+Plug 'luk400/vim-jukit'
+
 call plug#end()
 
 " deoplete:
@@ -118,41 +120,51 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" even in terminal mode
+tnoremap <C-J> <C-\><C-N><C-W><C-J>
+tnoremap <C-K> <C-\><C-N><C-W><C-K>
+tnoremap <C-L> <C-\><C-N><C-W><C-L>
+tnoremap <C-H> <C-\><C-N><C-W><C-H>
+
+" jukit
+let g:jukit_mpl_block = 1
+
+
 " ctrlp
-let g:ctrlp_prompt_mappings = {
-\ 'PrtBS()':              ['<bs>', '<c-]>'],
-\ 'PrtDelete()':          ['<del>'],
-\ 'PrtDeleteWord()':      ['<c-w>'],
-\ 'PrtClear()':           ['<c-u>'],
-\ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
-\ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
-\ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
-\ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
-\ 'PrtSelectMove("u")':   ['<PageUp>', '<kPageUp>'],
-\ 'PrtSelectMove("d")':   ['<PageDown>', '<kPageDown>'],
-\ 'PrtHistory(-1)':       ['<c-n>'],
-\ 'PrtHistory(1)':        ['<c-p>'],
-\ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
-\ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
-\ 'AcceptSelection("t")': ['<c-t>'],
-\ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>'],
-\ 'ToggleFocus()':        ['<s-tab>'],
-\ 'ToggleRegex()':        ['<c-r>'],
-\ 'ToggleByFname()':      ['<c-d>'],
-\ 'ToggleType(1)':        ['<c-f>', '<c-l>', '<c-up>'],
-\ 'ToggleType(-1)':       ['<c-b>', '<c-h>', '<c-down>'],
-\ 'PrtExpandDir()':       ['<tab>'],
-\ 'PrtInsert("c")':       ['<MiddleMouse>', '<insert>'],
-\ 'PrtInsert()':          ['<c-\>'],
-\ 'PrtCurStart()':        ['<c-a>'],
-\ 'PrtCurEnd()':          ['<c-e>'],
-\ 'PrtCurLeft()':         ['<left>', '<c-^>'],
-\ 'PrtCurRight()':        ['<right>'],
-\ 'PrtClearCache()':      ['<F5>'],
-\ 'PrtDeleteEnt()':       ['<F7>'],
-\ 'CreateNewFile()':      ['<c-y>'],
-\ 'MarkToOpen()':         ['<c-z>'],
-\ 'OpenMulti()':          ['<c-o>'],
-\ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>'],
-\ }
-let g:ctrlp_show_hidden=1
+"let g:ctrlp_prompt_mappings = {
+"\ 'PrtBS()':              ['<bs>', '<c-]>'],
+"\ 'PrtDelete()':          ['<del>'],
+"\ 'PrtDeleteWord()':      ['<c-w>'],
+"\ 'PrtClear()':           ['<c-u>'],
+"\ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
+"\ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
+"\ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
+"\ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
+"\ 'PrtSelectMove("u")':   ['<PageUp>', '<kPageUp>'],
+"\ 'PrtSelectMove("d")':   ['<PageDown>', '<kPageDown>'],
+"\ 'PrtHistory(-1)':       ['<c-n>'],
+"\ 'PrtHistory(1)':        ['<c-p>'],
+"\ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
+"\ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
+"\ 'AcceptSelection("t")': ['<c-t>'],
+"\ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>'],
+"\ 'ToggleFocus()':        ['<s-tab>'],
+"\ 'ToggleRegex()':        ['<c-r>'],
+"\ 'ToggleByFname()':      ['<c-d>'],
+"\ 'ToggleType(1)':        ['<c-f>', '<c-l>', '<c-up>'],
+"\ 'ToggleType(-1)':       ['<c-b>', '<c-h>', '<c-down>'],
+"\ 'PrtExpandDir()':       ['<tab>'],
+"\ 'PrtInsert("c")':       ['<MiddleMouse>', '<insert>'],
+"\ 'PrtInsert()':          ['<c-\>'],
+"\ 'PrtCurStart()':        ['<c-a>'],
+"\ 'PrtCurEnd()':          ['<c-e>'],
+"\ 'PrtCurLeft()':         ['<left>', '<c-^>'],
+"\ 'PrtCurRight()':        ['<right>'],
+"\ 'PrtClearCache()':      ['<F5>'],
+"\ 'PrtDeleteEnt()':       ['<F7>'],
+"\ 'CreateNewFile()':      ['<c-y>'],
+"\ 'MarkToOpen()':         ['<c-z>'],
+"\ 'OpenMulti()':          ['<c-o>'],
+"\ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>'],
+"\ }
+"let g:ctrlp_show_hidden=1
