@@ -1,4 +1,4 @@
-call plug#begin('~/.config/nvim/autoload')
+call plug#begin()
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'davidhalter/jedi-vim'
@@ -8,21 +8,43 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'preservim/nerdtree'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown' }
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'sainnhe/everforest'
-
 Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
-call plug#end()
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+call plug#end()
 
 " deoplete:
 " Use deoplete.
+if has("win32")
+    let userprofile_escaped = substitute(expand('~'), "\\", "\\\\\\\\\\\\\\\\", "g")
+    call remote#host#RegisterPlugin('python3', userprofile_escaped . '\\\\AppData\\\\Local\\\\nvim-data\\\\plugged\\\\deoplete.nvim\\\\rplugin\\\\python3\\\\deoplete', [
+          \ {'sync': v:false, 'name': '_deoplete_init', 'type': 'function', 'opts': {}},
+         \ ])
+endif
+
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><c-j> pumvisible() ? "\<c-n>" : "\<c-j>"
 inoremap <expr><c-k> pumvisible() ? "\<c-p>" : "\<c-k>"
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+" telescope
+inoremap <c-p> <cmd>Telescope find_files<cr>
+inoremap <c-o> <cmd>Telescope oldfiles<cr>
+nnoremap <c-p> <cmd>Telescope find_files<cr>
+nnoremap <c-o> <cmd>Telescope oldfiles<cr>
+
+lua require("config_telescope")
+
+" treesitter
+
+lua require("config_treesitter")
 
 " nerdtree
 map <silent> <C-n> :NERDTreeToggle<CR>
@@ -47,8 +69,6 @@ let g:mkdp_open_ip = ''
 let g:mkdp_browser = ''
 let g:mkdp_filetpyes = ['markdown']
 let g:mkdp_themee = 'dark'
-
-" ctrlp
 
 " vim-markdown
 let g:vim_markdown_toc_autofit = 1
@@ -94,6 +114,7 @@ nnoremap <silent> <C-w>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> <C-w>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
 " colorscheme
+let g:everforest_better_performance = 1
 colorscheme everforest
 
 " Navigate splits with ctrl+hjkl
@@ -101,41 +122,3 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
-" ctrlp
-let g:ctrlp_prompt_mappings = {
-\ 'PrtBS()':              ['<bs>', '<c-]>'],
-\ 'PrtDelete()':          ['<del>'],
-\ 'PrtDeleteWord()':      ['<c-w>'],
-\ 'PrtClear()':           ['<c-u>'],
-\ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
-\ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
-\ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
-\ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
-\ 'PrtSelectMove("u")':   ['<PageUp>', '<kPageUp>'],
-\ 'PrtSelectMove("d")':   ['<PageDown>', '<kPageDown>'],
-\ 'PrtHistory(-1)':       ['<c-n>'],
-\ 'PrtHistory(1)':        ['<c-p>'],
-\ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
-\ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
-\ 'AcceptSelection("t")': ['<c-t>'],
-\ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>'],
-\ 'ToggleFocus()':        ['<s-tab>'],
-\ 'ToggleRegex()':        ['<c-r>'],
-\ 'ToggleByFname()':      ['<c-d>'],
-\ 'ToggleType(1)':        ['<c-f>', '<c-l>', '<c-up>'],
-\ 'ToggleType(-1)':       ['<c-b>', '<c-h>', '<c-down>'],
-\ 'PrtExpandDir()':       ['<tab>'],
-\ 'PrtInsert("c")':       ['<MiddleMouse>', '<insert>'],
-\ 'PrtInsert()':          ['<c-\>'],
-\ 'PrtCurStart()':        ['<c-a>'],
-\ 'PrtCurEnd()':          ['<c-e>'],
-\ 'PrtCurLeft()':         ['<left>', '<c-^>'],
-\ 'PrtCurRight()':        ['<right>'],
-\ 'PrtClearCache()':      ['<F5>'],
-\ 'PrtDeleteEnt()':       ['<F7>'],
-\ 'CreateNewFile()':      ['<c-y>'],
-\ 'MarkToOpen()':         ['<c-z>'],
-\ 'OpenMulti()':          ['<c-o>'],
-\ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>'],
-\ }
