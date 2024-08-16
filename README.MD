@@ -1,4 +1,4 @@
-# Birgers init.vim
+# Birger's init.vim
 
 ## Plug
 Install [Plug](https://github.com/junegunn/vim-plug)
@@ -16,10 +16,3 @@ Treesitter requires...
 - nodejs in path to generate the grammar for latex
 - tree-sitter cli to generate the grammar for latex
 
-## Troubleshooting
-
-### Clipboard not working on Linux
-
-```
-sudo apt install xclip
-```
