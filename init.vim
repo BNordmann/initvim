@@ -80,12 +80,18 @@ let g:vim_markdown_new_list_item_indent = 0
 set number relativenumber
 set nu rnu
 
+" use ctrl+Enter as make command
+nnoremap <C-CR> :make<CR>
+
 " Enable spell-check in Markdown and Git commit
 autocmd FileType markdown setlocal spell
 autocmd FileType gitcommit setlocal spell
 
 " recognize markdown files as markdown
 autocmd BufNewFile,BufFilePre,BufRead \c*.md set filetype=markdown
+
+" make python scripts with python
+autocmd Filetype python setlocal makeprg=python3\ %
 
 " Set new empty buffers to markdown filetype
 autocmd BufEnter {} set filetype=markdown
