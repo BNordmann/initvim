@@ -81,7 +81,7 @@ set number relativenumber
 set nu rnu
 
 " use ctrl+Enter as make command
-nnoremap <C-CR> :make<CR>
+nnoremap <C-CR> :make!<CR>
 
 " Enable spell-check in Markdown and Git commit
 autocmd FileType markdown setlocal spell
