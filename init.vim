@@ -80,8 +80,9 @@ let g:vim_markdown_new_list_item_indent = 0
 set number relativenumber
 set nu rnu
 
-" use ctrl+Enter as make command
-nnoremap <C-CR> :make<CR>
+" use ctrl+Enter as "make" command
+nnoremap <C-CR> :make!<CR>
+autocmd FileType markdown nnoremap <buffer> <C-CR> :MarkdownPreview<CR>
 
 " Enable spell-check in Markdown and Git commit
 autocmd FileType markdown setlocal spell
