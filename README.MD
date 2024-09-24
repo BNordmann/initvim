@@ -8,6 +8,14 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 ```
 Then in Neovim: ```:PlugInstall```
 
+## Pyright
+
+The installation uses Pyright as LSP for autocompletion
+
+```cmd
+npm install -g pyright
+```
+
 ## Treesitter
 
 Treesitter requires...

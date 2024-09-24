@@ -1,8 +1,15 @@
 call plug#begin()
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'davidhalter/jedi-vim'
-Plug 'zchee/deoplete-jedi'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+
 Plug 'vim-airline/vim-airline'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
@@ -20,19 +27,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()
 
-" deoplete:
-" Use deoplete.
-if has("win32")
-    let userprofile_escaped = substitute(expand('~'), "\\", "\\\\\\\\\\\\\\\\", "g")
-    call remote#host#RegisterPlugin('python3', userprofile_escaped . '\\\\AppData\\\\Local\\\\nvim-data\\\\plugged\\\\deoplete.nvim\\\\rplugin\\\\python3\\\\deoplete', [
-          \ {'sync': v:false, 'name': '_deoplete_init', 'type': 'function', 'opts': {}},
-         \ ])
-endif
-
-let g:deoplete#enable_at_startup = 1
-inoremap <expr><c-j> pumvisible() ? "\<c-n>" : "\<c-j>"
-inoremap <expr><c-k> pumvisible() ? "\<c-p>" : "\<c-k>"
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" nvim-cmp
+lua require("config_nvim_cmp")
 
 " telescope
 inoremap <c-p> <cmd>Telescope find_files<cr>
