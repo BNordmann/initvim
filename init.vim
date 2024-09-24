@@ -56,6 +56,8 @@ let g:jedi#completions_enabled = 0
 " open the go-to function in split, not another buffer
 let g:jedi#use_splits_not_buffers = "right"
 
+let g:jedi#show_call_signatures = "2"
+
 " markdown-preview
 " 1 means nvim will open preview when entering a markdown buffer
 let g:mkdp_auto_start = 0
@@ -83,6 +85,7 @@ set nu rnu
 " use ctrl+Enter as "make" command
 nnoremap <C-CR> :make!<CR>
 autocmd FileType markdown nnoremap <buffer> <C-CR> :MarkdownPreview<CR>
+autocmd FileType nerdtree nnoremap <buffer> <C-CR> :NERDTreeCWD<CR>
 
 " Enable spell-check in Markdown and Git commit
 autocmd FileType markdown setlocal spell
@@ -101,6 +104,9 @@ let mapleader = " "
 
 " disable autofolding when a file is opened
 set nofoldenable
+
+" don't show current mode in command line (this is done by airline)
+set noshowmode
 
 " Tab as 4 spaces
 filetype plugin indent on
