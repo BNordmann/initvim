@@ -1,0 +1,35 @@
+{
+  "Standard imports": {
+    "prefix": ["import", "header"],
+    "body": [
+        "# -*- coding: utf-8 -*-",
+        "\"\"\"",
+        "Created on $CURRENT_DATE.$CURRENT_MONTH.$CURRENT_YEAR $CURRENT_HOUR:$CURRENT_MINUTE",
+        "",
+        "@author: Birger Nordmann",
+        "\"\"\"",
+        "",
+        "import numpy as np",
+        "import pandas as pd",
+        "import matplotlib as mpl",
+        "import matplotlib.pyplot as plt",
+        "import mplcursors",
+        "mpl.rcParams.update({\"axes.grid\": True})",
+        "import skrf as rf",
+        "import glob",
+        "import os",
+        "",
+        "",
+        "if __name__ == \"__main__\":",
+        "    ${0:pass}"
+    ],
+    "description": "Common used python header"
+  },
+  "Scikit RF Network": {
+      "prefix": ["ntwk"],
+      "body": [
+          "${1:ntwk} = rf.Network(${0:snp_file})"
+      ],
+      "description": "Import a touchstone file"
+  }
+}

@@ -31,6 +31,14 @@ cmp.setup({
                     fallback()
                 end
             end, {"i", "s"}),
+        --[[['<ESC>'] = cmp.mapping(function(fallback)
+                if cmp.visible() then
+                    cmp.abort()
+                else
+                    fallback()
+                end
+            end, {"i"}),
+        --]]
         ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
     sources = cmp.config.sources({
