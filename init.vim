@@ -30,6 +30,15 @@ call plug#end()
 " nvim-cmp
 lua require("config_nvim_cmp")
 
+" vsnip
+let g:vsnip_snippet_dir = stdpath('config') . "/vsnip"
+
+" Jump forward or backward
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+
 " telescope
 inoremap <c-p> <cmd>Telescope find_files<cr>
 inoremap <c-o> <cmd>Telescope oldfiles<cr>
