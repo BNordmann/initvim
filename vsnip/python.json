@@ -25,6 +25,16 @@
     ],
     "description": "Common used python header"
   },
+  "Matplotlib instaplot": {
+      "prefix": ["plot"],
+      "body": [
+            "fig = plt.figure(\"${1:title}\", clear=True)",
+            "ax = fig.add_subplot(1,1,1)",
+            "",
+            "ax.plot(${2:x}, ${3:y})"
+      ],
+      "description": "Create figure and subplot in matplotlib"
+  },
   "Scikit RF Network": {
       "prefix": ["ntwk"],
       "body": [

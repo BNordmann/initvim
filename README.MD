@@ -20,7 +20,7 @@ npm install -g pyright
 
 Treesitter requires...
 
-- a working C compiler in the path to compile the parsers.
+- a working C compiler in the path to compile the parsers. (zig is standalone)
 - nodejs in path to generate the grammar for latex
 - tree-sitter cli to generate the grammar for latex
 
