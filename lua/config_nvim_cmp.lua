@@ -65,23 +65,8 @@ sources = cmp.config.sources({
 require("cmp_git").setup() ]]-- 
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline({ '/', '?', ':' }, {
-   mapping = cmp.mapping.preset.cmdline({
-        ['<C-j>'] = cmp.mapping(function(fallback)
-                if cmp.visible() then
-                    cmp.select_next_item()
-                else
-                    fallback()
-                end
-            end, {"i", "s"}),
-        ['<C-k>'] = cmp.mapping(function(fallback)
-                if cmp.visible() then
-                    cmp.select_prev_item()
-                else
-                    fallback()
-                end
-            end, {"i", "s"}),
-    }),
+cmp.setup.cmdline({ '/', '?' }, {
+mapping = cmp.mapping.preset.cmdline(),
 sources = {
   { name = 'buffer' }
 }
