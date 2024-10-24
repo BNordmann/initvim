@@ -10,7 +10,9 @@
         "date: $CURRENT_DATE.$CURRENT_MONTH.$CURRENT_YEAR ",
         "toc: false",
         "",
-        "---"
+        "---",
+        "",
+        "${0:Hier könnte Ihre Werbung stehen.}"
     ],
     "description": "Pandoc compatible YAML header for markdown files."
   }
