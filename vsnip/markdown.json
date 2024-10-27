@@ -1,0 +1,19 @@
+{
+  "YAML header": {
+    "prefix": ["yaml", "header"],
+    "body": [
+        "---",
+        "#title: ",
+        "subject: \"${1:Subject}\"",
+        "author: Birger Nordmann",
+        "keywords: [${2:Tags}]",
+        "date: $CURRENT_DATE.$CURRENT_MONTH.$CURRENT_YEAR ",
+        "toc: false",
+        "",
+        "---",
+        "",
+        "${0:Hier könnte Ihre Werbung stehen.}"
+    ],
+    "description": "Pandoc compatible YAML header for markdown files."
+  }
+}
