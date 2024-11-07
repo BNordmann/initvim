@@ -106,6 +106,10 @@ nnoremap <C-CR> :make!<CR>
 autocmd FileType markdown nnoremap <buffer> <C-CR> :MarkdownPreview<CR>
 autocmd FileType nerdtree nnoremap <buffer> <C-CR> :NERDTreeCWD<CR>
 
+" use ctrl+shift+enter to build markdown with pandoc and copy result as html
+" to clipboard
+autocmd FileType markdown nnoremap <buffer> <C-S-CR> :write \| let @+ = system("pandoc -t html --embed-resources --webtex=https://latex.codecogs.com/svg.latex? " . shellescape(expand("%:p")))<CR>
+
 " Enable spell-check in Markdown and Git commit
 autocmd FileType markdown setlocal spell
 autocmd FileType gitcommit setlocal spell
