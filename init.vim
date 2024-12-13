@@ -119,6 +119,7 @@ autocmd BufNewFile,BufFilePre,BufRead \c*.md set filetype=markdown
 
 " make python scripts with python
 autocmd Filetype python setlocal makeprg=python3\ \"%\"
+autocmd BufRead,BufNewFile *.py setlocal makeprg=python3\ \"%\"
 
 " Set new empty buffers to markdown filetype
 autocmd BufEnter {} set filetype=markdown

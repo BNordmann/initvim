@@ -15,5 +15,14 @@
         "${0:Hier könnte Ihre Werbung stehen.}"
     ],
     "description": "Pandoc compatible YAML header for markdown files."
+  },
+  "Latex begin/end block": {
+    "prefix": ["begin"],
+    "body": [
+        "\\begin{${1:align}}",
+        "    ${0:Math}",
+        "\\end{${1}}"
+    ],
+    "description": "Latex environment"
   }
 }
