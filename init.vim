@@ -108,7 +108,8 @@ autocmd FileType nerdtree nnoremap <buffer> <C-CR> :NERDTreeCWD<CR>
 
 " use ctrl+shift+enter to build markdown with pandoc and copy result as html
 " to clipboard
-autocmd FileType markdown nnoremap <buffer> <C-S-CR> :write \| let @+ = system("pandoc -t html --embed-resources --webtex=https://latex.codecogs.com/svg.latex? " . shellescape(expand("%:p")))<CR>
+autocmd FileType markdown nnoremap <buffer> <C-S-CR> :let @+ = system("pandoc -t html --embed-resources --webtex=https://latex.codecogs.com/svg.latex?", join(getline(1, '$'), "\n"))<CR>
+
 
 " Enable spell-check in Markdown and Git commit
 autocmd FileType markdown setlocal spell
@@ -119,6 +120,7 @@ autocmd BufNewFile,BufFilePre,BufRead \c*.md set filetype=markdown
 
 " make python scripts with python
 autocmd Filetype python setlocal makeprg=python3\ \"%\"
+autocmd BufRead,BufNewFile *.py setlocal makeprg=python3\ \"%\"
 
 " Set new empty buffers to markdown filetype
 autocmd BufEnter {} set filetype=markdown

@@ -21,7 +21,10 @@
         "",
         "",
         "if __name__ == \"__main__\":",
-        "    ${0:pass}"
+        "    ${0:pass}",
+        "    ", 
+        "    mplcursors.cursor()",
+        "    plt.show()"
     ],
     "description": "Common used python header"
   },
@@ -38,8 +41,41 @@
   "Scikit RF Network": {
       "prefix": ["ntwk"],
       "body": [
-          "${1:ntwk} = rf.Network(${0:snp_file})"
+            "${1:ntwk} = rf.Network(${0:snp_file})"
       ],
       "description": "Import a touchstone file"
+  },
+  "Scikit-RF plot Circuit": {
+      "prefix": ["cir_plot"],
+      "body":[
+            "cir.plot_graph(network_labels=True, network_fontsize=15,",
+            "               port_labels=True, port_fontsize=15,",
+            "               edge_labels=True, edge_fontsize=10)"
+      ],
+      "description": "Plot Scikit-RF circuit."
+  },
+  "Scikit-RF embed network in circuit": {
+      "prefix": ["cir_embed"],
+      "body":[
+            "freq = ${1:ntwk}.frequency",
+            "line = rf.media.DefinedGammaZ0(frequency=freq, z0=50)",
+            "gnd = rf.Circuit.Ground(frequency=freq, name=\"gnd\", z0=50)",
+            "",
+            "port1 = rf.Circuit.Port(frequency=freq, name=\"port1\", z0=50)",
+            "port2 = rf.Circuit.Port(frequency=freq, name=\"port2\", z0=50)",
+            "port3 = rf.Circuit.Port(frequency=freq, name=\"port3\", z0=50)",
+            "",
+            "R_balance = line.resistor(100, name=\"R_balance\")",
+            "C_shunt = line.capacitor(1e-12, name=\"C_shunt\")",
+            "connections = [",
+            "        [(${1:ntwk}, 0), (C_shunt, 0), (port1,0)],",
+            "        [(${1:ntwk}, 1), (port2,0)],",
+            "        [(${1:ntwk}, 2), (port3,0)],",
+            "        [(gnd, 0), (C_shunt, 1)],",
+            "]",
+            "",
+            "cir = rf.Circuit(connections)"
+      ],
+      "description": "Embed a network into a scikit rf circuit."
   }
 }
