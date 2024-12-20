@@ -16,6 +16,13 @@
     ],
     "description": "Pandoc compatible YAML header for markdown files."
   },
+  "Markdown Image": {
+      "prefix": ["![]()"],
+      "body": [
+        "![${1:caption}](${2:url})${0}"
+      ],
+      "description": "Include image in markdown"
+  },
   "Latex begin/end block": {
     "prefix": ["begin"],
     "body": [
