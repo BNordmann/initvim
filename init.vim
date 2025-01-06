@@ -108,8 +108,16 @@ autocmd FileType nerdtree nnoremap <buffer> <C-CR> :NERDTreeCWD<CR>
 
 " use ctrl+shift+enter to build markdown with pandoc and copy result as html
 " to clipboard
-autocmd FileType markdown nnoremap <buffer> <C-S-CR> :let @+ = system("pandoc -t html --embed-resources --webtex=https://latex.codecogs.com/svg.latex?", join(getline(1, '$'), "\n"))<CR>
-
+if has("win32")
+    " The hoops with writing pandoc to a file and then having a second run
+    " with pandoc with the --ascii flag is necessary as I did not get 
+    " the encoding wit hSet-Clipboard -AsHtml right. (It works however without
+    " -AsHtml)
+    autocmd FileType markdown nnoremap <buffer> <C-S-CR> :w !powershell.exe -Command "$TempFile = New-TemporaryFile; pandoc --embed-resources --webtex='https://latex.codecogs.com/png.image?\%5Cdpi{300}' -t html -o $TempFile.FullName; pandoc --ascii -f html $TempFile.FullName \| Set-Clipboard -AsHtml; Remove-Item $TempFile"<CR>
+    autocmd FileType markdown vnoremap <buffer> <C-S-CR> :'<,'>w !powershell.exe -Command "$TempFile = New-TemporaryFile; pandoc --embed-resources --webtex='https://latex.codecogs.com/png.image?\%5Cdpi{300}' -t html -o $TempFile.FullName; pandoc --ascii -f html $TempFile.FullName \| Set-Clipboard -AsHtml; Remove-Item $TempFile"<CR>
+else
+    autocmd FileType markdown nnoremap <buffer> <C-S-CR> :let @+ = system("pandoc -t html --embed-resources --webtex=https://latex.codecogs.com/svg.latex?", join(getline(1, '$'), "\n"))<CR>
+endif
 
 " Enable spell-check in Markdown and Git commit
 autocmd FileType markdown setlocal spell
