@@ -41,8 +41,12 @@ smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 
 " telescope
 inoremap <c-p> <cmd>Telescope find_files<cr>
-inoremap <c-o> <cmd>Telescope oldfiles<cr>
 nnoremap <c-p> <cmd>Telescope find_files<cr>
+inoremap <c-s-p> <cmd>Telescope live_grep<cr>
+nnoremap <c-s-p> <cmd>Telescope live_grep<cr>
+inoremap <c-s-f> <cmd>Telescope current_buffer_fuzzy_find<cr>
+nnoremap <c-s-f> <cmd>Telescope current_buffer_fuzzy_find<cr>
+inoremap <c-o> <cmd>Telescope oldfiles<cr>
 nnoremap <c-o> <cmd>Telescope oldfiles<cr>
 
 lua require("config_telescope")
