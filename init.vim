@@ -109,6 +109,7 @@ set nu rnu
 nnoremap <C-CR> :make!<CR>
 autocmd FileType markdown nnoremap <buffer> <C-CR> :MarkdownPreview<CR>
 autocmd FileType nerdtree nnoremap <buffer> <C-CR> :NERDTreeCWD<CR>
+autocmd FileType python nnoremap <buffer> <C-CR> :make!<CR>
 
 " use ctrl+shift+enter to build markdown with pandoc and copy result as html
 " to clipboard
@@ -131,7 +132,7 @@ autocmd FileType gitcommit setlocal spell
 autocmd BufNewFile,BufFilePre,BufRead \c*.md set filetype=markdown
 
 " make python scripts with python
-autocmd Filetype python setlocal makeprg=python3\ \"%\"
+autocmd FileType python setlocal makeprg=python3\ \"%\"
 autocmd BufRead,BufNewFile *.py setlocal makeprg=python3\ \"%\"
 
 " Set new empty buffers to markdown filetype
