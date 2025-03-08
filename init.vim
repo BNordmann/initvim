@@ -121,7 +121,8 @@ if has("win32")
     autocmd FileType markdown nnoremap <buffer> <C-S-CR> :w !powershell.exe -Command "$TempFile = New-TemporaryFile; pandoc --embed-resources --webtex='https://latex.codecogs.com/png.image?\%5Cdpi{300}' -t html -o $TempFile.FullName; pandoc --ascii -f html $TempFile.FullName \| Set-Clipboard -AsHtml; Remove-Item $TempFile"<CR>
     autocmd FileType markdown vnoremap <buffer> <C-S-CR> :'<,'>w !powershell.exe -Command "$TempFile = New-TemporaryFile; pandoc --embed-resources --webtex='https://latex.codecogs.com/png.image?\%5Cdpi{300}' -t html -o $TempFile.FullName; pandoc --ascii -f html $TempFile.FullName \| Set-Clipboard -AsHtml; Remove-Item $TempFile"<CR>
 else
-    autocmd FileType markdown nnoremap <buffer> <C-S-CR> :let @+ = system("pandoc -t html --embed-resources --webtex=https://latex.codecogs.com/svg.latex?", join(getline(1, '$'), "\n"))<CR>
+    autocmd FileType markdown nnoremap <buffer> <C-S-CR> :w !pandoc --embed-resources -t html --webtex='https://latex.codecogs.com/png.image?\%5Cdpi{300}' \| xclip -t text/html -sel c<CR><CR>
+    autocmd FileType markdown vnoremap <buffer> <C-S-CR> :'<,'>w !pandoc --embed-resources -t html --webtex='https://latex.codecogs.com/png.image?\%5Cdpi{300}' \| xclip -t text/html -sel c<CR><CR>
 endif
 
 " Enable spell-check in Markdown and Git commit
