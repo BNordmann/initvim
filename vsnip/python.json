@@ -29,7 +29,7 @@
     "description": "Common used python header"
   },
   "Matplotlib instaplot": {
-      "prefix": ["plot"],
+      "prefix": ["fig", "plot"],
       "body": [
             "fig = plt.figure(\"${1:title}\", clear=True)",
             "ax = fig.add_subplot(1,1,1)",
@@ -44,6 +44,28 @@
             "${1:ntwk} = rf.Network(${0:snp_file})"
       ],
       "description": "Import a touchstone file"
+  },
+  "Scikit RF Networks": {
+      "prefix": ["ntwks"],
+      "body": [
+            "${1:ntwks} = rf.load_all_touchstones(${2})",
+            "",
+            "for ntwk in ntwks.values():",
+            "    ${0:pass}"
+      ],
+      "description": "Import all touchstone files"
+  },
+  "Scikit RF/Matplotlib plot networks": {
+      "prefix": ["plot_ntwks"],
+      "body": [
+          "${1:ntwks} = rf.load_all_touchstones(${2})",
+          "",
+          "fig = plt.figure(\"${3:S-Parameter}\", clear=True)",
+          "ax = fig.add_subplot(1,1,1)",
+          "for ntwk in nwks.values():",
+          "    ${0:pass}"
+      ],
+      "description": "Import all touchstone files and create figure to plot"
   },
   "Scikit-RF plot Circuit": {
       "prefix": ["cir_plot"],
