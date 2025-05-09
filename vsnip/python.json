@@ -38,6 +38,14 @@
       ],
       "description": "Create figure and subplot in matplotlib"
   },
+  "Matplotlib savefig with default name": {
+      "prefix": ["savefig", "fig.savefig"],
+      "body": [
+          "fig.savefig(${1:fig.canvas.get_default_filename()})",
+          "${0}"
+      ],
+      "description": "Save a matplotlib figure with the default filename"
+  },
   "Scikit RF Network": {
       "prefix": ["ntwk"],
       "body": [
