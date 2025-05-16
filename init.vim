@@ -10,6 +10,8 @@ Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
+Plug 'hrsh7th/cmp-emoji'
+
 Plug 'vim-airline/vim-airline'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
@@ -118,11 +120,11 @@ if has("win32")
     " with pandoc with the --ascii flag is necessary as I did not get 
     " the encoding wit hSet-Clipboard -AsHtml right. (It works however without
     " -AsHtml)
-    autocmd FileType markdown nnoremap <buffer> <C-S-CR> :w !powershell.exe -Command "$TempFile = New-TemporaryFile; pandoc --embed-resources --webtex='https://latex.codecogs.com/png.image?\%5Cdpi{300}' -t html -o $TempFile.FullName; pandoc --ascii -f html $TempFile.FullName \| Set-Clipboard -AsHtml; Remove-Item $TempFile"<CR>
-    autocmd FileType markdown vnoremap <buffer> <C-S-CR> :'<,'>w !powershell.exe -Command "$TempFile = New-TemporaryFile; pandoc --embed-resources --webtex='https://latex.codecogs.com/png.image?\%5Cdpi{300}' -t html -o $TempFile.FullName; pandoc --ascii -f html $TempFile.FullName \| Set-Clipboard -AsHtml; Remove-Item $TempFile"<CR>
+    autocmd FileType markdown nnoremap <buffer> <C-S-CR> :w !powershell.exe -Command "$TempFile = New-TemporaryFile; pandoc --embed-resources -f gfm --webtex='https://latex.codecogs.com/png.image?\%5Cdpi{300}' -t html -o $TempFile.FullName; pandoc --ascii -f html $TempFile.FullName \| Set-Clipboard -AsHtml; Remove-Item $TempFile"<CR>
+    autocmd FileType markdown vnoremap <buffer> <C-S-CR> :'<,'>w !powershell.exe -Command "$TempFile = New-TemporaryFile; pandoc --embed-resources -f gfm --webtex='https://latex.codecogs.com/png.image?\%5Cdpi{300}' -t html -o $TempFile.FullName; pandoc --ascii -f html $TempFile.FullName \| Set-Clipboard -AsHtml; Remove-Item $TempFile"<CR>
 else
-    autocmd FileType markdown nnoremap <buffer> <C-S-CR> :w !pandoc --embed-resources -t html --webtex='https://latex.codecogs.com/png.image?\%5Cdpi{300}' \| xclip -t text/html -sel c<CR><CR>
-    autocmd FileType markdown vnoremap <buffer> <C-S-CR> :'<,'>w !pandoc --embed-resources -t html --webtex='https://latex.codecogs.com/png.image?\%5Cdpi{300}' \| xclip -t text/html -sel c<CR><CR>
+    autocmd FileType markdown nnoremap <buffer> <C-S-CR> :w !pandoc --embed-resources -f gfm -t html --webtex='https://latex.codecogs.com/png.image?\%5Cdpi{300}' \| xclip -t text/html -sel c<CR><CR>
+    autocmd FileType markdown vnoremap <buffer> <C-S-CR> :'<,'>w !pandoc --embed-resources -f gfm -t html --webtex='https://latex.codecogs.com/png.image?\%5Cdpi{300}' \| xclip -t text/html -sel c<CR><CR>
 endif
 
 " Enable spell-check in Markdown and Git commit
