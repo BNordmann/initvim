@@ -87,6 +87,16 @@ matching = { disallow_symbol_nonprefix_matching = false }
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require('lspconfig')['pyright'].setup {
-capabilities = capabilities
+local on_attach = function(client, bufnr)
+    local opts = { noremap=true, silent=true, buffer=bufnr }
+    vim.keymap.set("n", "gD", vim.lsp.buf.definition, opts)
+end
+
+require('lspconfig')['pyright'].setup{
+    capabilities = capabilities,
+    on_attach = on_attach,
 }
+
+require('lspconfig').ccls.setup({
+    capabilities = capabilities
+})
