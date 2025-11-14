@@ -23,7 +23,9 @@ Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
 
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
+" Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
+
+Plug 'ibhagwan/fzf-lua'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -41,17 +43,18 @@ smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab
 imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 
-" telescope
-inoremap <c-p> <cmd>Telescope find_files<cr>
-nnoremap <c-p> <cmd>Telescope find_files<cr>
-inoremap <c-s-p> <cmd>Telescope live_grep<cr>
-nnoremap <c-s-p> <cmd>Telescope live_grep<cr>
-inoremap <c-s-f> <cmd>Telescope current_buffer_fuzzy_find<cr>
-nnoremap <c-s-f> <cmd>Telescope current_buffer_fuzzy_find<cr>
-inoremap <c-o> <cmd>Telescope oldfiles<cr>
-nnoremap <c-o> <cmd>Telescope oldfiles<cr>
+" fzf-lua
+lua require("config_fzf_lua")
+inoremap <c-p> <cmd>lua FzfLua.files()<cr>
+nnoremap <c-p> <cmd>lua FzfLua.files()<cr>
+inoremap <c-s-p> <cmd>lua FzfLua.live_grep()<cr>
+nnoremap <c-s-p> <cmd>lua FzfLua.live_grep()<cr>
+inoremap <c-s-f> <cmd>lua FzfLua.lgrep_curbuf()<cr>
+nnoremap <c-s-f> <cmd>lua FzfLua.lgrep_curbuf()<cr>
+inoremap <c-o> <cmd>lua FzfLua.oldfiles()<cr>
+nnoremap <c-o> <cmd>lua FzfLua.oldfiles()<cr>
 
-lua require("config_telescope")
+" lua require("config_telescope")
 
 " treesitter
 
