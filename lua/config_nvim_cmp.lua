@@ -92,11 +92,11 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "gD", vim.lsp.buf.definition, opts)
 end
 
-vim.lsp.config('pyright', {
+vim.lsp.enable('pyright', {
     capabilities = capabilities,
     on_attach = on_attach,
 })
 
-vim.lsp.config('ccls', {
+vim.lsp.enable('ccls', {
     capabilities = capabilities
 })
