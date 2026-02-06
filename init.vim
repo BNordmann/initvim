@@ -166,6 +166,10 @@ set colorcolumn=80,100
 " allow incrementing/decrementing alphabetical characters
 set nrformats+=alpha
 
+" Update title
+
+set title
+
 " key maps for increasing split size
 nnoremap <silent> <C-w>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> <C-w>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
