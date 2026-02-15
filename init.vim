@@ -20,10 +20,8 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'sainnhe/everforest'
 Plug 'godlygeek/tabular'
-Plug 'preservim/vim-markdown'
 
 Plug 'nvim-lua/plenary.nvim'
-" Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
 
 Plug 'ibhagwan/fzf-lua'
 
