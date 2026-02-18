@@ -146,6 +146,8 @@ autocmd BufEnter {} set filetype=markdown
 
 let mapleader = " "
 
+nnoremap <Leader>cd :cd %:p:h<CR>
+
 " disable autofolding when a file is opened
 set nofoldenable
 
@@ -167,7 +169,6 @@ set colorcolumn=80,100
 set nrformats+=alpha
 
 " Update title
-
 set title
 
 " key maps for increasing split size
