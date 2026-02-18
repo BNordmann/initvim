@@ -52,6 +52,8 @@ nnoremap <c-s-f> <cmd>lua FzfLua.lgrep_curbuf()<cr>
 inoremap <c-o> <cmd>lua FzfLua.oldfiles()<cr>
 nnoremap <c-o> <cmd>lua FzfLua.oldfiles()<cr>
 
+nnoremap gr <cmd>lua FzfLua.lsp_references()<cr>
+
 " lua require("config_telescope")
 
 " treesitter
